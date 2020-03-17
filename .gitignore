@@ -1,0 +1,8 @@
+CMakeCache.txt
+CMakeFiles/*
+cmake_install.cmake
+liblibbinheap.so
+Makefile
+test_bin_heap
+.vscode/*
+build/*
