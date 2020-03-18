@@ -25,7 +25,7 @@ binheap_type *build_heap(void *A,
                          const unsigned int num_of_elem,
                          const unsigned int max_size,  
 				         const size_t elem_size, 
-                         total_order_type cmp)
+                         total_order_type leq)
 {
     // This function must be re-implemented
 
@@ -37,14 +37,14 @@ void delete_heap(binheap_type *H)
     // This function must be implemented
 }
 
-void *decrease_key(binheap_type *H, void *node, void *value)
+void *decrease_key(binheap_type *H, void *node, const void *value)
 {
     // This function must be re-implemented
 
     return NULL;
 }
 
-void *insert_value(binheap_type *H, void *value)
+void *insert_value(binheap_type *H, const void *value)
 {
     // This function must be re-implemented
 
@@ -52,7 +52,7 @@ void *insert_value(binheap_type *H, void *value)
 }
 
 void print_heap(binheap_type *H, 
-                void (*value_printer)(void *value))
+                void (*value_printer)(const void *value))
 {
     // This function must be implemented
 }
