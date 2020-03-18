@@ -32,7 +32,7 @@ int is_heap_empty(const binheap_type *H);
  *
  * This function returns a pointer to the minimum in the heap w.r.t. 
  * its total order. If the heap is empty, NULL is returned. The 
- * asymptotic time-complexity of this function is O(log n).
+ * asymptotic time-complexity of this function is Theta(1).
  *
  * @param H is the heap whose minimum should be returned.
  * @return a pointer to the minimum in the heap, if H is not empty; 
@@ -58,7 +58,7 @@ const void *extract_min(binheap_type *H);
  * Build a new binary heap.
  *
  * This function build a new binary heap and fills it by using the
- * values in an array. Its asymptotic time-complexity is O(n).
+ * values in an array. Its asymptotic time-complexity is Theta(n).
  *
  * @param A is an array used a to store the keys of the heap. It is 
  *          also used to pass to this function a set of values to 
