@@ -1,8 +1,9 @@
 CMakeCache.txt
 CMakeFiles/*
 cmake_install.cmake
-liblibbinheap.so
 Makefile
-test_bin_heap
+libbinheap.so
+libcommon.a
+test_*
 .vscode/*
 build/*
