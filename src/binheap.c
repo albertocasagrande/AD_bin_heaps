@@ -24,7 +24,7 @@ const void *extract_min(binheap_type *H)
 binheap_type *build_heap(void *A, 
                          const unsigned int num_of_elem,
                          const unsigned int max_size,  
-				         const size_t key_size, 
+                         const size_t key_size, 
                          total_order_type leq)
 {
     // This function must be re-implemented
