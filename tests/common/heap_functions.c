@@ -5,7 +5,7 @@
 
 void *init_heap(void *A, 
                 const unsigned int num_of_elem, 
-				        const size_t elem_size, 
+                const size_t elem_size, 
                 total_order_type cmp)
 {
   return (void *)build_heap(A, num_of_elem, 
