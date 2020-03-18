@@ -9,8 +9,8 @@ void *init_heap(void *A,
 				const size_t elem_size, 
                 total_order_type cmp);
 
-void destroy_heap(void *array);
+void destroy_heap(void *heap);
 
-void keep_extracting_the_min_heap(void *array);
+void keep_extracting_the_min_heap(void *heap);
             
 #endif

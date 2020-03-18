@@ -2,21 +2,24 @@
 This project is a template for a simple array-implementation of binary 
 heaps in the C-programming language.
 
-In order to test the differences in term of execution-time in identifying 
-and removing the minimum from an array and the corresponding binary heap, 
-you need to implement the binary heap data structure and both the functions 
-`build_heap` and `extract_min`. 
-The binary heap must be represented by the type `binheap_type` in the 
-file [binheap.h](binheap.h); the two functions must be implemented in the 
-file [binheap.c](binheap.c).
+This template contains all the code needed to test your implementation of 
+binary heaps in both correctness and efficiency terms. 
+Your are exclusively required to code the type `binheap_type` 
+in the file [binheap.h](binheap.h) and all the functions 
+dealing it in the file [binheap.c](binheap.c).  
+Once this has been done, a set of tests can be produced as described later on.
 
-A Makefile can be produced by using [cmake](https://cmake.org/) as follows:
+You can generate the Makefile by using [cmake](https://cmake.org/) as follows:
 ```bash
 cmake -G "Unix Makefiles" CMakeLists.txt
 ```
-Afterwards you can compile the code by executing `make`. This produces an executable named `test_bin_heap` which can be executed in POSIX systems by using the command:
+Afterwards you can compile the code by executing `make`. This produces a set 
+of programs, named `test_delete_min`, `test_insert`, etc., which can be 
+executed in POSIX systems siply by writing `./' and the name of the program 
+in the terminal. 
+For instance, in order to execute `test_delete_min`, use the following command:
 ```bash
-./test_bin_heap 
+./test_delete_min
 Setting up test sets...done
 
 Keep removing the minimum

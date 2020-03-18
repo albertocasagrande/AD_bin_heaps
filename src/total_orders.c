@@ -2,16 +2,15 @@
 
 int leq_float(const void *a, const void *b)
 {
-  if (a==NULL) {
-    if (a==b) {
-      return 0;
-    }
-    return 1;
-  } else {
-    if (b==NULL) {
-      return -1;
-    }
-  }
-
   return *((float*)a)-*((float*)b);
+}
+
+int leq_int(const void *a, const void *b)
+{
+  return *((int*)a)-*((int*)b);
+}
+
+int geq_int(const void *a, const void *b)
+{
+  return *((int*)b)-*((int*)a);
 }

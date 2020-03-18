@@ -8,12 +8,13 @@ void *init_heap(void *A,
 				        const size_t elem_size, 
                 total_order_type cmp)
 {
-  return (void *)build_heap(A, num_of_elem, elem_size, cmp);
+  return (void *)build_heap(A, num_of_elem, 
+                            num_of_elem, elem_size, cmp);
 }
 
 void destroy_heap(void *heap) 
 {
-  free(heap);
+  delete_heap(heap);
 }
 
 void keep_extracting_the_min_heap(void *heap)

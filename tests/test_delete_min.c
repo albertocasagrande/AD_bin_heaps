@@ -2,10 +2,10 @@
 #include <string.h>
 #include <binheap.h>
 
-#include "test_set.h"
-#include "test_time.h"
-#include "array_functions.h"
-#include "heap_functions.h"
+#include "common/test_set.h"
+#include "common/test_time.h"
+#include "common/array_functions.h"
+#include "common/heap_functions.h"
 
 #define INSTANCE_SIZE (1<<14)
 #define INSTANCES 100
