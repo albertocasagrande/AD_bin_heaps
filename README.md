@@ -17,7 +17,7 @@ cmake -G "Unix Makefiles" CMakeLists.txt
 ```
 Afterwards you can compile the code by executing `make`. This produces a set 
 of programs, named `test_delete_min`, `test_insert`, etc., which can be 
-executed in POSIX systems siply by writing `./' and the name of the program 
+executed in POSIX systems siply by writing `./` and the name of the program 
 in the terminal. 
 For instance, in order to execute `test_delete_min`, use the following command:
 ```bash
