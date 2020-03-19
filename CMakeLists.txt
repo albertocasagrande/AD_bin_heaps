@@ -30,10 +30,44 @@ FILE (GLOB PROJ_INCLUDES "${LIB_INCLUDE_DIR}/*.h")
 FILE (GLOB SOURCES "${LIB_SRC_DIR}/*.c")
 
 add_library(${PROJECT_LIB_NAME} SHARED 
-	    ${SOURCES} 
+            ${SOURCES} 
             ${PROJ_INCLUDES})
 
-target_link_libraries (${PROJECT_LIB_NAME} )
+SET(${LIB_REQUIRED_LIBRARIES} "")
+
+if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+  # If your system is a Linux system, then try to detect if librt is 
+  # required, i.e.,  glibc < 2.17 || glibc = 2.29
+  
+  include(CheckCXXSourceCompiles)
+  set(CLOCK_GETTIME_TEST
+    "
+    #include <time.h>
+    int main() {
+      clock_gettime(CLOCK_REALTIME, NULL);
+      return 0;
+    }
+    "
+  )
+  check_cxx_source_compiles( "${CLOCK_GETTIME_TEST}" 
+                             LIBRT_IS_NOT_REQUIRED )
+  if (NOT LIBRT_IS_NOT_REQUIRED)
+    # ch
+    message(STATUS "libc doesn't contain clock_gettime()")
+    set(CMAKE_REQUIRED_LIBS_OLD "${CMAKE_REQUIRED_LIBRARIES}")
+    set(CMAKE_REQUIRED_LIBRARIES "${CMAKE_REQUIRED_LIBRARIES} rt")
+	check_cxx_source_compiles( "${CLOCK_GETTIME_TEST}" 
+                               LIBRT_CONTAINS_CLOCK_GETTIME)
+    set(CMAKE_REQUIRED_LIBRARIES "${CMAKE_REQUIRED_LIBS_OLD}")
+    if (LIBRT_CONTAINS_CLOCK_GETTIME)
+      list(APPEND LIB_REQUIRED_LIBRARIES "rt")
+    else()
+      message(FATAL_ERROR "librt (required to get clock_gettime()) cannot be linked")
+    endif()
+  endif()
+endif()
+
+target_link_libraries (${PROJECT_LIB_NAME} ${LIB_REQUIRED_LIBRARIES})
 
 install (TARGETS ${PROJECT_LIB_NAME} 
 	LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR})
@@ -52,10 +86,6 @@ foreach( EXECUTABLE ${EXECUTABLES} )
    add_executable(${EXECUTABLE} "${TESTS_SRC_DIR}/${EXECUTABLE}.c")
    target_link_libraries(${EXECUTABLE} ${PROJECT_LIB_NAME} "common")
 endforeach( EXECUTABLE ${EXECUTABLES} )
-
-#install( TARGETS ${EXECUTABLES}  ${EXECUTABLE} 
-#            RUNTIME DESTINATION ${BINARY_INSTALL_DIR} 
-#            LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR} )
 
 include( InstallRequiredSystemLibraries )
 
