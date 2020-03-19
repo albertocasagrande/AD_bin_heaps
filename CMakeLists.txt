@@ -53,9 +53,9 @@ foreach( EXECUTABLE ${EXECUTABLES} )
    target_link_libraries(${EXECUTABLE} ${PROJECT_LIB_NAME} "common")
 endforeach( EXECUTABLE ${EXECUTABLES} )
 
-install( TARGETS ${EXECUTABLES}  ${EXECUTABLE} 
-            RUNTIME DESTINATION ${BINARY_INSTALL_DIR} 
-            LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR} )
+#install( TARGETS ${EXECUTABLES}  ${EXECUTABLE} 
+#            RUNTIME DESTINATION ${BINARY_INSTALL_DIR} 
+#            LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR} )
 
 include( InstallRequiredSystemLibraries )
 

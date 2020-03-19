@@ -67,6 +67,7 @@ const void *extract_min(binheap_type *H);
  *                    stored in the heap.
  * @param max_size is the maximum number of nodes in the heap (i.e., 
  *                 the size of A).
+ * @param key_size is the size in bytes of the values stored in A.
  * @param leq is the total order characterizing the heap.
  * @return a pointer to the new binary heap.
  **********************************************************************/
