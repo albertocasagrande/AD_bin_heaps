@@ -80,6 +80,7 @@ include_directories("${PROJECT_BINARY_DIR}" "${PROJECT_SOURCE_DIR}/include" )
 FILE (GLOB TESTS_COMMON_SOURCES "${TESTS_COMMON_SRC_DIR}/*.c"
 	                            "${TESTS_COMMON_SRC_DIR}/*.h")
 add_library("common" ${TESTS_COMMON_SOURCES})
+target_link_libraries("common" ${PROJECT_LIB_NAME})
 
 set( EXECUTABLES "test_delete_min" "test_insert")
 foreach( EXECUTABLE ${EXECUTABLES} )
