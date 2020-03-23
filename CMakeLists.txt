@@ -68,6 +68,7 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
 endif()
 
 target_link_libraries (${PROJECT_LIB_NAME} ${LIB_REQUIRED_LIBRARIES})
+set_property(TARGET ${PROJECT_LIB_NAME} PROPERTY C_STANDARD 99)
 
 install (TARGETS ${PROJECT_LIB_NAME} 
 	LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR})
@@ -81,11 +82,13 @@ FILE (GLOB TESTS_COMMON_SOURCES "${TESTS_COMMON_SRC_DIR}/*.c"
 	                            "${TESTS_COMMON_SRC_DIR}/*.h")
 add_library("common" ${TESTS_COMMON_SOURCES})
 target_link_libraries("common" ${PROJECT_LIB_NAME})
+set_property(TARGET "common" PROPERTY C_STANDARD 99)
 
 set( EXECUTABLES "test_delete_min" "test_insert")
 foreach( EXECUTABLE ${EXECUTABLES} )
    add_executable(${EXECUTABLE} "${TESTS_SRC_DIR}/${EXECUTABLE}.c")
    target_link_libraries(${EXECUTABLE} ${PROJECT_LIB_NAME} "common")
+   set_property(TARGET ${EXECUTABLE} PROPERTY C_STANDARD 99)
 endforeach( EXECUTABLE ${EXECUTABLES} )
 
 include( InstallRequiredSystemLibraries )
