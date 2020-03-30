@@ -13,10 +13,10 @@ void int_printer(const void *value)
 
 int main(int argc, char *argv[])
 {	
-  float *maxA=(float *)malloc(MAX_SIZE);
+  float *maxA=(float *)malloc(sizeof(int)*MAX_SIZE);
   binheap_type *maxH=build_heap(maxA,0,MAX_SIZE,sizeof(int),geq_int);
 
-  float *minA=(float *)malloc(MAX_SIZE);
+  float *minA=(float *)malloc(sizeof(int)*MAX_SIZE);
   binheap_type *minH=build_heap(minA,0,MAX_SIZE,sizeof(int),leq_int);
   
   printf("Keep inserting and removing the minimum from the (min/max)heaps ");
