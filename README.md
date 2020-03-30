@@ -39,3 +39,14 @@ n	On Heaps	On Arrays
 4090	0.000001	5.064005
 ```
 
+## Installing the library
+
+In order to install the library, you can set the install directory `<BINHEAP_INSTALL_DIR>` by executing:
+```bash
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=<BINHEAP_INSTALL_DIR> CMakeLists.txt
+```
+If you don't do it, the library and its headers will be installed in `/usr/local/`.
+After that simply write:
+```bash
+make install
+```
