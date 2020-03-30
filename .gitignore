@@ -7,3 +7,4 @@ libcommon.a
 test_*
 .vscode/*
 build/*
+install_manifest.txt
